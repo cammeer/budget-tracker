@@ -1,4 +1,3 @@
-// create variable to hold db connection
-let db
+// let db
 
-window.addEventListener('online', needVariable)
+// window.addEventListener('online', needVariable)
