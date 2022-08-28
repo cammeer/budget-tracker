@@ -1,9 +1,15 @@
-// // let db
-
 // let db
+let db
 
-// //establish connection  to db
+//establish connection
+const request = indexedDB.open('budget', 1)
 
-// const request = indexedDB.open('', 1)
+// Object store
+request.onupgradeneeded = (e) => {
+  const db = e.target.result
+  const pendingStore = db.createObjectStore('pending', {
+    autoIncrement: true,
+  })
+}
 
-// // window.addEventListener('online', needVariable)
+window.addEventListener('online', checkDatabase)
