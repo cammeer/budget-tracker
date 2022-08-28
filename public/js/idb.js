@@ -12,4 +12,24 @@ request.onupgradeneeded = (e) => {
   })
 }
 
+request.onsuccess = (e) => {
+  db = e.target.result
+  if (navigator.onLine) checkDatabase()
+}
+
+request.onerror = (e) => {
+  console.log(e.target.errorCode)
+}
+
+const saveRecord = (record) => {
+  // create transaction
+  const transaction = db.transaction(['pending'], 'readwrite')
+
+  // access object store.
+  const pendingStore = transaction.objectStore('pending')
+
+  // add record
+  pendingStore.add(record)
+}
+
 window.addEventListener('online', checkDatabase)
